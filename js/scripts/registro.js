@@ -58,33 +58,34 @@ var Registro = function () {
 
     var obtenerNombreAlumno = function (datos) {
 
+        if (datos.tieneCuenta === null) {
+            $('#panel-cargar').removeClass('hide');
+            $('#nombreAlumno').val(datos.nombre);
+
+        } else {
+            swal("El alumno ya tiene una cuenta creada. Quiere recuperar contraseña? ingrese aqui")
+            swal({
+                title: "El alumno ya tiene una cuenta creada",
+                text: "Quiere recuperar contraseña? ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                    .then(function (isConfirm) {
+                        if (!isConfirm) {
+                            window.location.assign('http://micarrera.elcolegioencasa.edu.ar/');
+                        } else {
+                            window.location.assign('http://micarrera.elcolegioencasa.edu.ar');
+                        }
+                    });
+
+        }/*
         if (datos.esAlumno !== null) {
-            if (datos.tieneCuenta === null) {
-                $('#panel-cargar').removeClass('hide');
-                $('#nombreAlumno').val(datos.nombre);
-
-            } else {
-                swal("El alumno ya tiene una cuenta creada. Quiere recuperar contraseña? ingrese aqui")
-                swal({
-                    title: "El alumno ya tiene una cuenta creada",
-                    text: "Quiere recuperar contraseña? ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                        .then(function (isConfirm) {
-                            if (!isConfirm) {
-                                window.location.assign('http://micarrera.elcolegioencasa.edu.ar/');
-                            } else {
-                                window.location.assign('http://micarrera.elcolegioencasa.edu.ar');
-                            }
-                        });
-
-            }
+            
 
         } else {
             swal('El alumno no corresponde al establecimiento ');
-        }
+        }   */
 
     };
 
